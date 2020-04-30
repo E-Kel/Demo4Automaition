@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import search.SearchField;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -31,7 +30,7 @@ public class Test {
 
     static Stream<Arguments> provideArguments() {
         return Stream.of(
-                arguments("Tops" , new ArrayList<>()),
+                arguments("Tops" , TOPS_RESULT),
                 arguments("Dresses",  DRESSES_RESULT),
                 arguments("T-shirts", T_SHIRTS_RESULT),
                 arguments("Casual dresses", CASUAL_DRESSES_RESULT),

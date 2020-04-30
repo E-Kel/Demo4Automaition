@@ -1,5 +1,6 @@
 package constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -9,7 +10,7 @@ public class ResultValues {
 
     }
 
-    public static List<String> TOPS_RESULT = null;
+    public static List<String> TOPS_RESULT = new ArrayList<>();
     public static List<String> DRESSES_RESULT = asList("Printed Summer Dress", "Printed Dress", "Printed Summer Dress," +
             "Printed Chiffon Dress", "Printed Dress");
     public static List<String> T_SHIRTS_RESULT = asList("Faded Short Sleeve T-shirts");
