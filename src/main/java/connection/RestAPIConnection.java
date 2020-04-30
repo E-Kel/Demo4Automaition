@@ -12,4 +12,8 @@ public class RestAPIConnection {
         return RestAssured.given()
                 .header("Content-Type", "text/html");
     }
+    public static RequestSpecification connection(String contentType){
+        return RestAssured.given()
+                .header("Content-Type", contentType);
+    }
 }
