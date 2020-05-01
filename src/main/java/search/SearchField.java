@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class SearchField {
 
-    public Response getResponseAfterGet(String searchContent) {
+    public Response getResponseAfterGetRequest(String searchContent) {
         return RestAPIConnection.connection()
                 .when()
                 .params("controller", "search",
