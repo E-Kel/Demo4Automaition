@@ -8,7 +8,7 @@
 *.properties
 # BlueJ files
 *.ctxt
-
+src/main/java/Tempp
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 *.iml
