@@ -8,7 +8,7 @@ public class RestAPIConnection {
 
     }
 
-    public static RequestSpecification connection(){
+    public static RequestSpecification connectionHTML(){
         return RestAssured.given()
                 .header("Content-Type", "text/html");
     }
