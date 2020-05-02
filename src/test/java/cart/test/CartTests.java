@@ -1,5 +1,6 @@
 package cart.test;
 
+import constants.URL;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -28,7 +29,7 @@ public class CartTests {
                         "id_product="+id+"&" +
                         "token=e817bb0705dd58da8db074c69f729fd8")
                 .when()
-                .post("http://automationpractice.com/index.php");
+                .post(URL.DEFAULT_URL);
 
         Map<String, String> products = response.jsonPath().getMap("products[0]", String.class, String.class);
         assertEquals(200, response.statusCode());
