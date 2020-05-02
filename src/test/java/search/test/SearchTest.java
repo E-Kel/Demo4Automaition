@@ -19,7 +19,7 @@ public class SearchTest {
     @MethodSource("util.DataUtils#provideArguments")
     void verifySearchFieldWithValidData(String searchContent, List<String> list) {
         SearchField searchField = new SearchField();
-        Response response = searchField.getResponseAfterGetRequest(searchContent);
+        Response response = searchField.getSearchResults(searchContent);
         assertEquals(searchField.getFindText(response), searchContent.toLowerCase());
         assertTrue(searchField.parseFoundElementsToStringCollection(response).containsAll(list));
         assertEquals(200, response.statusCode());
