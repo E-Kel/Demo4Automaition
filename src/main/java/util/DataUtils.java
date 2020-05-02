@@ -13,7 +13,7 @@ public class DataUtils {
 
     }
 
-    public static Stream<Arguments> provideArguments() {
+    public static Stream<Arguments> provideArgumentsValidSearchData() {
         return Stream.of(
                 arguments("Tops" , TOPS_RESULT),
                 arguments("Dresses",  DRESSES_RESULT),
@@ -25,4 +25,18 @@ public class DataUtils {
                 arguments("Blouses", BLOUSE_RESULT)
         );
     }
+
+    public static Stream<Arguments> provideArgumentsInvalidSearchData() {
+        return Stream.of(
+                arguments(" "),
+                arguments("1234567890"),
+                arguments("!@#$%^&*()_+~`{}[];:'\"/?.,<>№|/"),
+                arguments("абвгдеёжзийклмнопрстуфхцчшщъыьэюя"),
+                arguments("платье"),
+                arguments("1234567890!@#$%^&*()_+"),
+                arguments("null")
+        );
+    }
+
+
 }

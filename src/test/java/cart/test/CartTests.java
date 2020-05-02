@@ -1,21 +1,18 @@
 package cart.test;
 
-import constants.URL;
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartTests {
+
     @ParameterizedTest
     @Tag("API")
     @DisplayName("Check adds product to cart ")
@@ -31,7 +28,7 @@ public class CartTests {
                         "id_product="+id+"&" +
                         "token=e817bb0705dd58da8db074c69f729fd8")
                 .when()
-                .post(URL.DEFAULT_URL);
+                .post("http://automationpractice.com/index.php");
 
         Map<String, String> products = response.jsonPath().getMap("products[0]", String.class, String.class);
         assertEquals(200, response.statusCode());
