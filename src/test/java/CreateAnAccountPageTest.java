@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import pages.createAnAccountPage.CreateAnAccountAllFields;
 import pages.signIn.EmailField;
 
 import java.util.stream.Stream;
@@ -17,14 +18,14 @@ public class CreateAnAccountPageTest {
     @Tag("API")
     @DisplayName("Check creation an account with valid data")
     @MethodSource("provideArguments")
-    void verifySearchFieldWithValidData(String testEmail){
-        EmailField emailField = new EmailField();
-        Response response = emailField.getResponseAfterPost(testEmail);
+    void verifyFieldsOnCreateAndAccountPageWithValidData(String testEmail,String pass,String fname,String lname,String address,String city,String  zip,String phone){
+        CreateAnAccountAllFields accountAllFields= new CreateAnAccountAllFields();
+        Response response = accountAllFields.getResponseAfterPost(testEmail,pass,fname,lname,address,city,zip,phone);
         assertEquals(200, response.statusCode());
     }
 
     static Stream<Arguments> provideArguments() {
-        return Stream.of(
+        return Stream.generate(()->
                 arguments(emailGenerator(),
                         passwordGenerator(),
                         fNameGenerator(),
@@ -32,8 +33,8 @@ public class CreateAnAccountPageTest {
                         addressGenerator(),
                         cityGenerator(),
                         zipCodeGenerator(),
-                        phoneNumberGenerator())
-               );
+                        phoneNumberGenerator()
+               )).limit(5);
     }
 
 

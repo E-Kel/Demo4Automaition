@@ -48,8 +48,9 @@ public class TestDataGeneratorForRegistration {
     public static String cityGenerator(){
         return simpleStringGenerator(BASE_SYMBOLS, intGenerator(2,18));
     }
-    public static int zipCodeGenerator(){
-        return intGenerator(10000,89999);
+    public static String zipCodeGenerator(){
+        int s = intGenerator(10000,89999);
+        return Integer.toString(s);
     }
     public static String phoneNumberGenerator(){
         Random rand = new Random();
@@ -64,12 +65,4 @@ public class TestDataGeneratorForRegistration {
                 + "-" + df3.format(num2)
                 + "-" + df4.format(num3);
     }
-
-    public static void main(String[] args) {
-        String email = emailGenerator();
-        String pass = passwordGenerator();
-        int a;
-        System.out.println(phoneNumberGenerator());
-    }
-
 }

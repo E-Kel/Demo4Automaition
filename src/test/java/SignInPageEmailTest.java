@@ -19,20 +19,16 @@ public class SignInPageEmailTest {
     @Tag("API")
     @DisplayName("Check registration with valid data")
     @MethodSource("aguments")
-    void verifySearchFieldWithValidData(String testEmail){
+    void verifyEmailFieldWithValidEmail(String testEmail){
         EmailField emailField = new EmailField();
         Response response = emailField.getResponseAfterPost(testEmail);
+        System.out.println(response.htmlPath().getString(""));
         assertEquals(200, response.statusCode());
     }
 
     static Stream<Arguments> aguments() {
-        return Stream.of(
-                arguments(emailGenerator()),
-                arguments(emailGenerator()),
-                arguments(emailGenerator()),
-                arguments(emailGenerator()),
-                arguments(emailGenerator())
-        );
+        return Stream.generate(() ->
+                arguments(emailGenerator())).limit(5);
     }
 
 
