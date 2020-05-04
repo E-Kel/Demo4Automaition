@@ -21,7 +21,7 @@ public class SearchTest {
     @DisplayName("Verify search field with valid data")
     @MethodSource("util.DataUtils#provideArgumentsValidSearchData")
     void verifySearchFieldWithValidData(String searchContent, List<String> list) {
-        Response response = searchField.getSearchResults(searchContent);
+        Response response = searchField.search(searchContent);
         assertEquals(searchField.getFindText(response), searchContent.toLowerCase());
         assertTrue(searchField.parseFoundElementsToStringCollection(response).containsAll(list));
         assertEquals(200, response.statusCode());
@@ -33,7 +33,7 @@ public class SearchTest {
     @ParameterizedTest
     @MethodSource("util.DataUtils#provideArgumentsInvalidSearchData")
     void verifySearchFieldWithInValidData(String search) {
-        Response response = searchField.getSearchResults(search);
+        Response response = searchField.search(search);
         String expected = ResultValues.SEARCH_NOT_FOUND_MESSAGE + "\"" + search + "\"";
 
         String result = response.htmlPath().

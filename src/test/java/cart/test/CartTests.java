@@ -19,7 +19,7 @@ public class CartTests {
     @DisplayName("Check adds product to cart ")
     @ValueSource(strings = {"1", "2", "3", "4", "5", "6", "7"})
     void addProductToCart(String id) {
-        Response response = cart.postAddCartResults(id);
+        Response response = cart.addProductToCart(id, "1", "e817bb0705dd58da8db074c69f729fd8");
         Map<String, String> products = response.jsonPath().getMap("products[0]", String.class, String.class);
 
         assertEquals(200, response.statusCode());
