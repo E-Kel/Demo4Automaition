@@ -1,4 +1,3 @@
-import com.sun.codemodel.JForLoop;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,26 +8,26 @@ import pages.signIn.EmailField;
 import java.util.stream.Stream;
 
 import static constants.TestDataGeneratorForRegistration.emailGenerator;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SignInPageEmailTest {
 
     @ParameterizedTest
     @Tag("API")
-    @DisplayName("Check registration with valid data")
-    @MethodSource("aguments")
+    @DisplayName("Check email field with valid data on the sign in page")
+    @MethodSource("provideEmail")
     void verifyEmailFieldWithValidEmail(String testEmail){
         EmailField emailField = new EmailField();
-        Response response = emailField.getResponseAfterPost(testEmail);
-        System.out.println(response.htmlPath().getString(""));
+        Response response = emailField.emailValidationOnSignInPage(testEmail);
         assertEquals(200, response.statusCode());
+        assertEquals(false,response.jsonPath().get("hasError"));
+
     }
 
-    static Stream<Arguments> aguments() {
+    static Stream<Arguments> provideEmail() {
         return Stream.generate(() ->
-                arguments(emailGenerator())).limit(5);
+                arguments(emailGenerator())).limit(1);
     }
 
 

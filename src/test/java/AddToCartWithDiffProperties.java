@@ -17,16 +17,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class AddToCartWithDiffProperties {
-
+     static Integer PRODUCT_COUNT_TOTAL=0;
     @ParameterizedTest
     @Tag("API")
     @DisplayName("Check creation an account with valid data")
     @MethodSource("provideArguments1")
     void AddToCartWithDiffColorAndSize(String qty, String ipa){
-        AddToCardWithParameters tocart = new AddToCardWithParameters();
-        String beforeScan = tocart.getCartStage().htmlPath().getString("/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/a/span[1]");
-        Response responceAfterScan = tocart.getResponseAfterPost(qty,ipa);
+        AddToCardWithParameters addToCartButton = new AddToCardWithParameters();
+        Response responceAfterScan = addToCartButton.getResponseAfterPost(qty,ipa);
+        PRODUCT_COUNT_TOTAL+=Integer.parseInt(qty);
+
         assertEquals(200, responceAfterScan.statusCode());
+        assertEquals(false,responceAfterScan.jsonPath().get("hasError"));
+        assertEquals(PRODUCT_COUNT_TOTAL, responceAfterScan.jsonPath().get("nbTotalProducts"));
 
 
 
