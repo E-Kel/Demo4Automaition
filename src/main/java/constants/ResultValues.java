@@ -22,5 +22,7 @@ public class ResultValues {
             "Printed Chiffon Dress", "Printed Dress", "Blouse");
     public static final List<String> BLOUSE_RESULT = Collections.singletonList("Blouse");
 
+    public static final String SEARCH_NOT_FOUND_MESSAGE = "No results were found for your search ";
+
 
 }
