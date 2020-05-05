@@ -4,16 +4,22 @@ import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 
 public class RestAPIConnection {
-    private RestAPIConnection(){
+    private RestAPIConnection() {
 
     }
 
-    public static RequestSpecification connection(){
+    public static RequestSpecification connectionHTML() {
         return RestAssured.given()
                 .header("Content-Type", "text/html");
     }
 
-    public static RequestSpecification connection(String contentType, String cookie){
+    public static RequestSpecification connection() {
+        return RestAssured.given()
+                .header("Content-Type", "text/html");
+    }
+
+
+    public static RequestSpecification connection(String contentType, String cookie) {
         return RestAssured.given()
                 .header("Content-Type", contentType)
                 .header("Cookie", cookie);
