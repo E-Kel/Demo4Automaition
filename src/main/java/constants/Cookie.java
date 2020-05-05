@@ -6,6 +6,6 @@ public class Cookie {
     private Cookie() {
     }
 
-    public static final String cookie1 = String.valueOf(connectAndGetCookie());
+    public static final String staticCookie = String.valueOf(connectAndGetCookie());
 
 }
