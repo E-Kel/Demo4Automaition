@@ -1,5 +1,3 @@
-import constants.URL;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -39,7 +37,6 @@ public class CreateAnAccountPageTest {
                                                                 city,
                                                                 zip,
                                                                 phone);
-     System.out.println(response.getBody().print());
 
         assertEquals(200, response.statusCode());
 

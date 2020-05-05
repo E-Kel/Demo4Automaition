@@ -11,7 +11,7 @@ public class TestDataGeneratorForAddingToCartWithProperties {
         return String.valueOf(rnd.nextInt(12) + 19);
     }
     public static String generateQTY(){
-        return String.valueOf(rnd.nextInt(1000));
+        return String.valueOf(rnd.nextInt(1000) + 1);
     }
     private static List<String[]> ls = new ArrayList<>();
     private static void generate() {
