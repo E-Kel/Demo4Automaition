@@ -13,7 +13,7 @@ public class CreateAnAccountAllFields {
                                     String city,
                                     String zip,
                                     String phone) {
-        return RestAPIConnection.connection("text/html")
+        return RestAPIConnection.connection("application/x-www-form-urlencoded")
                 .header("Connection", "keep-alive")
                 .header("Cache-Control", "max-age=0")
                 .header("Origin", "http://automationpractice.com")
@@ -25,31 +25,23 @@ public class CreateAnAccountAllFields {
                 .header("Referer", "http://automationpractice.com/index.php?controller=authentication&back=my-account")
                 .header("Accept-Language", "en-US,en;q=0.9,ru;q=0.8")
                 .header("Cookie", "PrestaShop-a30a9934ef476d11b6cc3c983616e364=hAu015YRgBsybYXWhxAwwQdMkYDOSnzUI%2BXqFzcVDMJfhPEzPefwCMj2PO7SVz2fzHkw8BMEp3UTOLKsojETh1U4ZSbP%2FxC7e%2BkqoAV8Y%2BOgHhBfR4Qnb2tEKLDO1IA19WOszytKoZZINNFIKQwxVbCPu8opP3PX4YCrpgak%2BZ0gwp4X7W%2F7k76hsjfY8g%2B1kmVPfVOGgH%2Fk5m7ojtZIug%3D%3D000152")
-                .body("customer_firstname:qwert\n" +
-                        "customer_lastname:asdfgh\n" +
-                        "email:asddgddfgd@SDASDD.D\n" +
-                        "passwd:ghnmh\n" +
-                        "days:\n" +
-                        "months:\n" +
-                        "years:\n" +
-                        "firstname:qwert\n" +
-                        "lastname:asdfgh\n" +
-                        "company:\n" +
-                        "address1:Sumska+St.+18/20\n" +
-                        "address2:\n" +
-                        "city:Kharkiv\n" +
-                        "id_state:16\n" +
-                        "postcode:00000\n" +
-                        "id_country:21\n" +
-                        "other:\n" +
-                        "phone:12345678999\n" +
-                        "phone_mobile:12345678999\n" +
-                        "alias:My+address\n" +
-                        "dni:\n" +
-                        "email_create:1\n" +
-                        "is_new_customer:1\n" +
-                        "back:my-account\n" +
-                        "submitAccount:")
+                .formParam("customer_firstname", fName)
+                .formParam("customer_lasttname", lName)
+                .formParam("email", testEmail)
+                .formParam("passwd", pass)
+                .formParam("firstname", fName)
+                .formParam("lastname", lName)
+                .formParam("address1", address)
+                .formParam("city", city)
+                .formParam("id_state", 16)
+                .formParam("postcode", zip)
+                .formParam("id_country", 21)
+                .formParam("phone_mobile", phone)
+                .formParam("alias", "My+address")
+                .formParam("email_create", "1")
+                .formParam("is_new_customer","1")
+                .formParam("back", "my-account")
+
                 .when()
                 .post(URL.DEFAULT_URL+"?controller=authentication&back=my-account");
     }
