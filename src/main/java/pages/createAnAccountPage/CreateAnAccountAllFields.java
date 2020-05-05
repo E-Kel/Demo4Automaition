@@ -6,14 +6,9 @@ import io.restassured.response.Response;
 
 public class CreateAnAccountAllFields {
     // a few trublles with this test. How to validate it? (response in console after execution)
-    public Response createAnAccount(String testEmail,
-                                    String pass,
-                                    String fName,
-                                    String lName,
-                                    String address,
-                                    String city,
-                                    String zip,
-                                    String phone) {
+    public Response createAnAccount(String testEmail, String pass, String fName,
+                                    String lName, String address, String city,
+                                    String zip, String phone, String cookie) {
         return RestAPIConnection.connection("application/x-www-form-urlencoded")
                 .header("Connection", "keep-alive")
                 .header("Cache-Control", "max-age=0")

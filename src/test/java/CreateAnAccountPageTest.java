@@ -1,3 +1,4 @@
+import constants.Cookie;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -14,48 +15,32 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CreateAnAccountPageTest {
 
-    // a few trublles with this test. How to validate it? (response in console after execution)
     @ParameterizedTest
     @Tag("API")
     @DisplayName("Check creation an account with valid data")
     @MethodSource("provideArgumentsForAccountCreation")
-    void verifyFieldsOnCreateAndAccountPageWithValidData(String testEmail,
-                                                         String pass,
-                                                         String fname,
-                                                         String lname,
-                                                         String address,
-                                                         String city,
-                                                         String  zip,
-                                                         String phone){
-        CreateAnAccountAllFields accountAllFields= new CreateAnAccountAllFields();
-        Response response = accountAllFields.createAnAccount(
-                                                                testEmail,
-                                                                pass,
-                                                                fname,
-                                                                lname,
-                                                                address,
-                                                                city,
-                                                                zip,
-                                                                phone);
-
+    void verifyFieldsOnCreateAndAccountPageWithValidData(String testEmail, String pass, String fname,
+                                                         String lname, String address, String city,
+                                                         String zip, String phone, String cookie) {
+        CreateAnAccountAllFields accountAllFields = new CreateAnAccountAllFields();
+        Response response = accountAllFields.createAnAccount(testEmail, pass, fname,
+                lname, address, city,
+                zip, phone, cookie);
         assertEquals(200, response.statusCode());
-
-
-
     }
 
     static Stream<Arguments> provideArgumentsForAccountCreation() {
-        return Stream.generate(()->
-                arguments(emailGenerator(),
+        return Stream.generate(() ->
+                arguments(
+                        emailGenerator(),
                         passwordGenerator(),
                         fNameGenerator(),
                         lNameGenerator(),
                         addressGenerator(),
                         cityGenerator(),
                         zipCodeGenerator(),
-                        phoneNumberGenerator()
-               )).limit(5);
+                        phoneNumberGenerator(),
+                        Cookie.cookie1
+                )).limit(5);
     }
-
-
 }
