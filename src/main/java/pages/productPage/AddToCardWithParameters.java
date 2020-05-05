@@ -2,30 +2,47 @@ package pages.productPage;
 
 import connection.RestAPIConnection;
 import constants.URL;
-import io.restassured.RestAssured;
-import io.restassured.internal.RestAssuredResponseImpl;
 import io.restassured.response.Response;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+
+import java.util.List;
 
 
 public class AddToCardWithParameters {
-        public Response getResponseAfterPost(String qty,String ipa) {
-        return RestAssured.given()
+        public Response addProductToCartWithProperties(String id,String qty, String ipa) {
+        return RestAPIConnection.connection("application/x-www-form-urlencoded")
                 .accept("application/json")
-                .header("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-                .header("Cookies", "a30a9934ef476d11b6cc3c983616e364=gGUlJmz608BKmaascatCZgQJ5Bza%2BaS6Z%2FSlaXDM0sld4fUCdaBmHRIdWKp975yIGByKNxeiYhMLEBY%2BVrNo3Xo9H9sljmaj5RGGaj%2FvK1EbBR7u%2Bf%2Fu124MLiSBPyMZuK636q9S3xa0nSdt8vojYvPAVJnxoH1RYIWpGTjb2k1vu5xYfEa2tyPOo1wZnYjisKVrIjqBpAP0qgdbwg3mfAbghyzqH43iHaP0%2F0NPYub7uxBynkxev3VPrK0YxpIDZCwW6AzZbgskOBPFdjHEq80XKVtxU0K%2BhqfwfTo9FSM%3D000210")
-                .body("controller=cart&" +
-                        "add=1&" +
-                        "ajax=true&" +
-                        "qty="+qty+"&" +
-                        "id_product=5&" +
-                        "token=e817bb0705dd58da8db074c69f729fd8&" +
-                        "ipa="+ipa)
+                .header("Cookie", "PrestaShop-a30a9934ef476d11b6cc3c983616e364=gGUlJmz608BKmaascatCZgQJ5Bza%2BaS6Z%2FSlaXDM0sld4fUCdaBmHRIdWKp975yIGByKNxeiYhMLEBY%2BVrNo3U9AFKN02dBKdAcbQaQlvRKGN1O8eYOTZa5%2FHNY9%2F56hphqTxC%2FN9rGaK6MOhfLgLxBgFcAdKLls0NgeTPsnYa%2F4x9upAMBRaknpbdX%2FrZN6quvBxi%2FRFt4uHrxczfxpOGTnRt54QReYLtB%2FfZGUnueTarlk7qBQcBS1%2FCCaKuadwvUDnl6oGroJmhuEZq%2Fi4mEFTgbZRHU8rEbe%2B1sdWAo%3D000219")
+                .body("controller=cart" +
+                        "&add=1&ajax=true" +
+                        "&qty=" + qty +
+                        "&id_product=" + id +
+                        "&token=e817bb0705dd58da8db074c69f729fd8" +
+                        "&ipa="+ipa)
                 .when()
-                .post(URL.DEFAULT_URL+"?id_product=5&controller=product");
+                .post(URL.DEFAULT_URL);
     }
-
-
-
+    public static Response clearCart(Integer id,List<Integer> listIpa){
+        Response response = null;
+            for (Integer ipa:
+             listIpa) {
+            response = deleteProductFromCart(id, ipa);
+        }
+            return response;
+    }
+    public static  Response deleteProductFromCart(Integer id, Integer ipa){
+            return RestAPIConnection.connection("application/x-www-form-urlencoded")
+                    .accept("application/json")
+                    .header("Cookie", "PrestaShop-a30a9934ef476d11b6cc3c983616e364=gGUlJmz608BKmaascatCZgQJ5Bza%2BaS6Z%2FSlaXDM0sld4fUCdaBmHRIdWKp975yIGByKNxeiYhMLEBY%2BVrNo3U9AFKN02dBKdAcbQaQlvRKGN1O8eYOTZa5%2FHNY9%2F56hphqTxC%2FN9rGaK6MOhfLgLxBgFcAdKLls0NgeTPsnYa%2F4x9upAMBRaknpbdX%2FrZN6quvBxi%2FRFt4uHrxczfxpOGTnRt54QReYLtB%2FfZGUnueTarlk7qBQcBS1%2FCCaKuadwvUDnl6oGroJmhuEZq%2Fi4mEFTgbZRHU8rEbe%2B1sdWAo%3D000219")
+                    .body("controller=cart" +
+                            "&ajax=true" +
+                            "&delete=true" +
+                            "&summary=true" +
+                            "&id_product=" +id.toString() +
+                            "&ipa=" + ipa.toString() +
+                            "&id_address_delivery=0" +
+                            "&token=e817bb0705dd58da8db074c69f729fd8" +
+                            "&allow_refresh=1")
+                    .when()
+                    .post(URL.DEFAULT_URL);
+    }
 }

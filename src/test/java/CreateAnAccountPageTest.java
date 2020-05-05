@@ -26,7 +26,7 @@ public class CreateAnAccountPageTest {
                                                          String  zip,
                                                          String phone){
         CreateAnAccountAllFields accountAllFields= new CreateAnAccountAllFields();
-        Response response = accountAllFields.getResponseAfterPost(
+        Response response = accountAllFields.createAnAccount(
                                                                 testEmail,
                                                                 pass,
                                                                 fname,
@@ -35,7 +35,12 @@ public class CreateAnAccountPageTest {
                                                                 city,
                                                                 zip,
                                                                 phone);
+        String result = response.htmlPath().
+                getString("html.body@class=\"nav\".span.input.@value");
+        System.out.println(result);
+
         assertEquals(200, response.statusCode());
+        assertEquals(regIsSuccsessString, result);
     }
 
     static Stream<Arguments> provideArgumentsForAccountCreation() {
@@ -50,6 +55,7 @@ public class CreateAnAccountPageTest {
                         phoneNumberGenerator()
                )).limit(5);
     }
+//Welcome to your account. Here you can manage all of your personal information and orders.
 
 
 }

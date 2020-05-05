@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 public class TestDataGeneratorForRegistration {
+    public static final String regIsSuccsessString = "Welcome to your account. Here you can manage all of your personal information and orders";
     private static String BASE_SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZqwertyuiopasdfghjklzxcvbnm1234567890";
     private static String EMAIL_SYMBOLS = BASE_SYMBOLS + "-_";
     private static String PASSWORD_SYMBOLS = EMAIL_SYMBOLS + "!@#$%^&*()=+{}";
