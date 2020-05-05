@@ -1,20 +1,17 @@
+package cart.test;
+
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import pages.productPage.AddToCardWithParameters;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Stream;
 
-import static constants.TestDataGeneratorForAddingToCartWithProperties.generateIpa;
-import static constants.TestDataGeneratorForAddingToCartWithProperties.generateQTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static pages.productPage.AddToCardWithParameters.deleteProductFromCart;
 
 public class AddToCartWithDiffProperties {
@@ -24,7 +21,7 @@ public class AddToCartWithDiffProperties {
     @ParameterizedTest
     @Tag("API")
     @DisplayName("Check creation an account with valid data")
-    @MethodSource("provideArguments1")
+    @MethodSource("util.DataUtils#provideArgumentsForAddingToCartWithDifSizeAndColor")
     void AddToCartWithDiffColorAndSize(String qty, String ipa) {
         AddToCardWithParameters addToCartButton = new AddToCardWithParameters();
         Response responceAfterScan = addToCartButton.addProductToCartWithProperties("5", qty, ipa);
@@ -48,10 +45,5 @@ public class AddToCartWithDiffProperties {
         }
         assertEquals("0", lastDeletedElement.jsonPath().get("nbTotalProducts").toString());
         allipaSet.clear();
-    }
-
-    static Stream<Arguments> provideArguments1() {
-        return Stream.generate(() ->
-                arguments(generateQTY(), generateIpa())).limit(10);
     }
 }
