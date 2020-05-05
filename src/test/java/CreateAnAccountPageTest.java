@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CreateAnAccountPageTest {
+
+    // a few trublles with this test. How to validate it? (response in console after execution)
     @ParameterizedTest
     @Tag("API")
     @DisplayName("Check creation an account with valid data")
@@ -57,7 +59,6 @@ public class CreateAnAccountPageTest {
                         phoneNumberGenerator()
                )).limit(5);
     }
-//Welcome to your account. Here you can manage all of your personal information and orders.
 
 
 }

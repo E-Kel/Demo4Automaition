@@ -21,14 +21,7 @@ public class AddToCardWithParameters {
                 .when()
                 .post(URL.DEFAULT_URL);
     }
-    public static Response clearCart(Integer id,List<Integer> listIpa){
-        Response response = null;
-            for (Integer ipa:
-             listIpa) {
-            response = deleteProductFromCart(id, ipa);
-        }
-            return response;
-    }
+
     public static  Response deleteProductFromCart(Integer id, Integer ipa){
             return RestAPIConnection.connection("application/x-www-form-urlencoded")
                     .accept("application/json")

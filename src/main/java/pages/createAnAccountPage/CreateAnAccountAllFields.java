@@ -5,6 +5,7 @@ import constants.URL;
 import io.restassured.response.Response;
 
 public class CreateAnAccountAllFields {
+    // a few trublles with this test. How to validate it? (response in console after execution)
     public Response createAnAccount(String testEmail,
                                     String pass,
                                     String fName,
