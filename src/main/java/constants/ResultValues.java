@@ -24,5 +24,10 @@ public class ResultValues {
 
     public static final String SEARCH_NOT_FOUND_MESSAGE = "No results were found for your search ";
 
+    public static final String INVALID_EMAIL_MESSAGE = "Invalid email address.";
+    public static final String ALREADY_REGISTERED_EMAIL_MESSAGE = "An account using this email address has already been registered. " +
+            "Please enter a valid password or request a new one. ";
+
+
 
 }
