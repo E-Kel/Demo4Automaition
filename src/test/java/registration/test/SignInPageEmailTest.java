@@ -17,7 +17,7 @@ public class SignInPageEmailTest {
     @MethodSource("util.DataUtils#provideEmail")
     void verifyEmailFieldWithValidEmail(String cookie, String testEmail) {
         EmailField emailField = new EmailField();
-        Response response = emailField.emailValidationOnSignInPage(cookie, testEmail);
+        Response response = emailField.emailValidationOnSignInPage(testEmail, cookie);
         assertEquals(200, response.statusCode());
         assertEquals(false, response.jsonPath().get("hasError"));
     }

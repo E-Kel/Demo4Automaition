@@ -5,7 +5,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class EmailField {
-    public Response emailValidationOnSignInPage(String cookie, String testEmail) {
+    public Response emailValidationOnSignInPage(String testEmail, String cookie) {
         return RestAssured.given()
                 .accept("application/json")
                 .header("Cookie", cookie)
