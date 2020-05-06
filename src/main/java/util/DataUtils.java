@@ -1,5 +1,6 @@
 package util;
 
+import connection.GetConstantsUtil;
 import constants.Cookie;
 import org.junit.jupiter.params.provider.Arguments;
 
@@ -62,8 +63,8 @@ public class DataUtils {
                         cityGenerator(),
                         zipCodeGenerator(),
                         phoneNumberGenerator(),
-                        Cookie.STATIC_COOKIE
-                )).limit(5);
+                        GetConstantsUtil.getNewCookie()
+                )).limit(2);
     }
 
 }
