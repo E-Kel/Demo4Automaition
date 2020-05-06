@@ -1,20 +1,15 @@
 package cart.test;
 
+import constants.Tokens;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import pages.productPage.AddToCardWithParameters;
 
-import java.util.stream.Stream;
-
-import static constants.TestDataGeneratorForAddingToCartWithProperties.generateIpa;
-import static constants.TestDataGeneratorForAddingToCartWithProperties.generateQTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static pages.productPage.AddToCardWithParameters.deleteProductFromCart;
 
 public class AddToCartWithDiffProperties {
@@ -22,11 +17,11 @@ public class AddToCartWithDiffProperties {
 
     @ParameterizedTest
     @Tag("API")
-    @DisplayName("Check creation an account with valid data")
+    @DisplayName("Check that various amount of procduct can be added with different size and color")
     @MethodSource("util.DataUtils#provideArgumentsForAddingToCartWithDifSizeAndColor")
-    void AddToCartWithDiffColorAndSize(String qty, String ipa) {
+    void AddToCartWithDiffColorAndSize(String qty, String ipa, String token) {
         AddToCardWithParameters addToCartButton = new AddToCardWithParameters();
-        Response responceAfterScan = addToCartButton.addProductToCartWithProperties("5", qty, ipa);
+        Response responceAfterScan = addToCartButton.addProductToCartWithProperties("5", qty, ipa, token);
         PRODUCT_COUNT_TOTAL += Integer.parseInt(qty);
         assertEquals(200, responceAfterScan.statusCode());
         assertEquals(false, responceAfterScan.jsonPath().get("hasError"));
@@ -34,19 +29,16 @@ public class AddToCartWithDiffProperties {
 
     }
 
-    @BeforeAll
+    @AfterAll
     @Tag("API")
     @DisplayName("Clear the cart")
+    @MethodSource("util.DataUtils#provideIdAndIpa")
     static void checkThatCartIsEmpty() {
         Response lastDeletedElement = null;
-        for (int ipa = 19; ipa < 31; ipa++) {
-            lastDeletedElement = deleteProductFromCart(5, ipa);
+        for (int ipa = 19; ipa < 38; ipa++) {
+            lastDeletedElement = deleteProductFromCart(5, ipa, Tokens.TOKEN);
         }
         assertEquals("0", lastDeletedElement.jsonPath().get("nbTotalProducts").toString());
     }
 
-    static Stream<Arguments> provideArguments1() {
-        return Stream.generate(() ->
-                arguments(generateQTY(), generateIpa())).limit(10);
-    }
 }

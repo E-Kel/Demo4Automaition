@@ -1,8 +1,10 @@
 package util;
 
 import constants.Cookie;
+import constants.Tokens;
 import org.junit.jupiter.params.provider.Arguments;
 
+import java.util.HashMap;
 import java.util.stream.Stream;
 
 import static constants.ResultValues.*;
@@ -12,14 +14,16 @@ import static constants.TestDataGeneratorForRegistration.emailGenerator;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class DataUtils {
+    private static HashMap<Object, Object> IDs_AND_IPA;
+
     private DataUtils() {
 
     }
 
     public static Stream<Arguments> provideArgumentsValidSearchData() {
         return Stream.of(
-                arguments("Tops" , TOPS_RESULT),
-                arguments("Dresses",  DRESSES_RESULT),
+                arguments("Tops", TOPS_RESULT),
+                arguments("Dresses", DRESSES_RESULT),
                 arguments("T-shirts", T_SHIRTS_RESULT),
                 arguments("Casual dresses", CASUAL_DRESSES_RESULT),
                 arguments("Summer dresses", SUMMER_DRESSES_RESULT),
@@ -48,6 +52,6 @@ public class DataUtils {
 
     static Stream<Arguments> provideArgumentsForAddingToCartWithDifSizeAndColor() {
         return Stream.generate(() ->
-                arguments(generateQTY(), generateIpa(), "e817bb0705dd58da8db074c69f729fd8")).limit(10);
+                arguments(generateQTY(), generateIpa(), Tokens.TOKEN)).limit(10);
     }
 }
