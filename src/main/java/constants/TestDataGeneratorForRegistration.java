@@ -1,8 +1,5 @@
 package constants;
 
-import java.text.DecimalFormat;
-import java.util.Random;
-
 public class TestDataGeneratorForRegistration {
     public static final String regIsSuccsessString = "Welcome to your account. Here you can manage all of your personal information and orders";
     private static String BASE_SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZqwertyuiopasdfghjklzxcvbnm1234567890";
@@ -27,43 +24,5 @@ public class TestDataGeneratorForRegistration {
 
     public static String emailGenerator() {
         return simpleStringGenerator(EMAIL_SYMBOLS, intGenerator(1, 20)) + "@gmail.com";
-    }
-
-    public static String passwordGenerator() {
-        return simpleStringGenerator(PASSWORD_SYMBOLS, intGenerator(5, 20));
-    }
-
-    public static String fNameGenerator() {
-        return simpleStringGenerator(BASE_SYMBOLS, intGenerator(5, 20));
-    }
-
-    public static String lNameGenerator() {
-        return simpleStringGenerator(BASE_SYMBOLS, intGenerator(5, 20));
-    }
-
-    public static String addressGenerator(){
-        String street = simpleStringGenerator(BASE_SYMBOLS+"-", intGenerator(3,15))+" St.";
-        String number = intGenerator(800)+"/"+intGenerator(100);
-        return street + " " + number;
-    }
-    public static String cityGenerator(){
-        return simpleStringGenerator(BASE_SYMBOLS, intGenerator(2,18));
-    }
-    public static String zipCodeGenerator(){
-        int s = intGenerator(10000,89999);
-        return Integer.toString(s);
-    }
-    public static String phoneNumberGenerator(){
-        Random rand = new Random();
-        int num1 = (rand.nextInt(7) + 1) * 100 + (rand.nextInt(8) * 10) + rand.nextInt(8);
-        int num2 = rand.nextInt(743);
-        int num3 = rand.nextInt(10000);
-
-        DecimalFormat df3 = new DecimalFormat("000"); // 3 zeros
-        DecimalFormat df4 = new DecimalFormat("0000"); // 4 zeros
-
-        return "+" + df3.format(num1)
-                + "-" + df3.format(num2)
-                + "-" + df4.format(num3);
     }
 }

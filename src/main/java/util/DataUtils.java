@@ -1,6 +1,5 @@
 package util;
 
-import connection.GetConstantsUtil;
 import constants.Cookie;
 import org.junit.jupiter.params.provider.Arguments;
 
@@ -9,7 +8,7 @@ import java.util.stream.Stream;
 import static constants.ResultValues.*;
 import static constants.TestDataGeneratorForAddingToCartWithProperties.generateIpa;
 import static constants.TestDataGeneratorForAddingToCartWithProperties.generateQTY;
-import static constants.TestDataGeneratorForRegistration.*;
+import static constants.TestDataGeneratorForRegistration.emailGenerator;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class DataUtils {
@@ -49,21 +48,6 @@ public class DataUtils {
 
     static Stream<Arguments> provideArgumentsForAddingToCartWithDifSizeAndColor() {
         return Stream.generate(() ->
-                arguments(generateQTY(), generateIpa())).limit(10);
-    }
-
-    static Stream<Arguments> provideArgumentsForAccountCreation() {
-        return Stream.generate(() ->
-                arguments(
-                        emailGenerator(),
-                        passwordGenerator(),
-                        fNameGenerator(),
-                        lNameGenerator(),
-                        addressGenerator(),
-                        cityGenerator(),
-                        zipCodeGenerator(),
-                        phoneNumberGenerator(),
-                        GetConstantsUtil.getNewCookie()
-                )).limit(2);
+                arguments(generateQTY(), generateIpa(), "e817bb0705dd58da8db074c69f729fd8")).limit(10);
     }
 }
