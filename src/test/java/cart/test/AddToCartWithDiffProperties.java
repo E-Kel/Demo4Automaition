@@ -2,7 +2,7 @@ package cart.test;
 
 import constants.Tokens;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,24 +21,24 @@ public class AddToCartWithDiffProperties {
     @MethodSource("util.DataUtils#provideArgumentsForAddingToCartWithDifSizeAndColor")
     void AddToCartWithDiffColorAndSize(String qty, String ipa, String token) {
         AddToCardWithParameters addToCartButton = new AddToCardWithParameters();
-        Response responceAfterScan = addToCartButton.addProductToCartWithProperties("5", qty, ipa, token);
+        Response responseAfterScan = addToCartButton.addProductToCartWithProperties("5", qty, ipa, token);
         PRODUCT_COUNT_TOTAL += Integer.parseInt(qty);
-        assertEquals(200, responceAfterScan.statusCode());
-        assertEquals(false, responceAfterScan.jsonPath().get("hasError"));
-        assertEquals(PRODUCT_COUNT_TOTAL, responceAfterScan.jsonPath().get("nbTotalProducts"));
+        assertEquals(200, responseAfterScan.statusCode());
+        assertEquals(false, responseAfterScan.jsonPath().get("hasError"));
+        assertEquals(PRODUCT_COUNT_TOTAL, responseAfterScan.jsonPath().get("nbTotalProducts"));
 
     }
 
-    @AfterAll
+    @BeforeAll
     @Tag("API")
     @DisplayName("Clear the cart")
-    @MethodSource("util.DataUtils#provideIdAndIpa")
     static void checkThatCartIsEmpty() {
         Response lastDeletedElement = null;
         for (int ipa = 19; ipa < 38; ipa++) {
             lastDeletedElement = deleteProductFromCart(5, ipa, Tokens.TOKEN);
         }
-        assertEquals("0", lastDeletedElement.jsonPath().get("nbTotalProducts").toString());
+        assertEquals("0", lastDeletedElement.getBody().jsonPath().get("nbTotalProducts").toString());
+
     }
 
 }

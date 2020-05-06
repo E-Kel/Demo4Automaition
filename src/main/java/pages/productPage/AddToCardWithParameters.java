@@ -27,7 +27,7 @@ public class AddToCardWithParameters {
 
     public static Response deleteProductFromCart(Integer id, Integer ipa, String token) {
         return RestAPIConnection.connection("application/x-www-form-urlencoded")
-                .accept("application/json, text/javascript, */*; q=0.01")
+                .accept("application/json")
                 .header("Cookie", STATIC_COOKIE)
                 .body(deleteProductFromCartBodyRequest(id, ipa, token))
                 .when()
@@ -41,7 +41,7 @@ public class AddToCardWithParameters {
                 "&delete=true" +
                 "&summary=true" +
                 "&id_product=" + id.toString() +
-                "&ipa=tr" + ipa.toString() +
+                "&ipa=" + ipa.toString() +
                 "&id_address_delivery=0" +
                 "&token=" + token +
                 "&allow_refresh=1";

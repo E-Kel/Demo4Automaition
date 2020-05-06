@@ -4,13 +4,13 @@ import connection.RestAPIConnection;
 import constants.URL;
 import io.restassured.response.Response;
 
-import static constants.Cookie.STATIC_COOKIE;
+import static constants.Cookie.STATIC_COOKIE1;
 
 public class Cart {
 
     public Response addProductToCart(String idProduct, String qty, String token) {
         return RestAPIConnection.connection("application/x-www-form-urlencoded")
-                .header("Cookie", STATIC_COOKIE)
+                .header("Cookie", STATIC_COOKIE1)
                 .accept("application/json")
                 .body(getAddToCartBodyRequest(idProduct, qty, token))
                 .when()
