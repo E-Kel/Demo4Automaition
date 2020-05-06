@@ -43,7 +43,7 @@ public class DataUtils {
 
     static Stream<Arguments> provideEmail() {
         return Stream.generate(() ->
-                arguments(Cookie.staticCookie, emailGenerator())).limit(10);
+                arguments(Cookie.STATIC_COOKIE, emailGenerator())).limit(10);
     }
 
     static Stream<Arguments> provideArgumentsForAddingToCartWithDifSizeAndColor() {
@@ -62,7 +62,7 @@ public class DataUtils {
                         cityGenerator(),
                         zipCodeGenerator(),
                         phoneNumberGenerator(),
-                        Cookie.staticCookie
+                        Cookie.STATIC_COOKIE
                 )).limit(5);
     }
 

@@ -1,6 +1,8 @@
 package registration.test;
 
 import io.restassured.response.Response;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,12 +19,19 @@ public class CreateAnAccountPageTest {
     @MethodSource("util.DataUtils#provideArgumentsForAccountCreation")
     void verifyFieldsOnCreateAndAccountPageWithValidData(String testEmail, String pass, String fname,
                                                          String lname, String address, String city,
-                                                         String zip, String phone, String cookie) {
+                                                         String zip, String phone) {
         CreateAnAccountAllFields accountAllFields = new CreateAnAccountAllFields();
         Response response = accountAllFields.createAnAccount(testEmail, pass, fname,
                 lname, address, city,
-                zip, phone, cookie);
+                zip, phone);
+
+        Response verify = accountAllFields.verifyThatUserCanLogInWithRegistredCreds(testEmail, pass);
+
+        Document html = Jsoup.parse(verify.body().asString());
+        String resultName = html.select(".header_user_info").text();
+
         assertEquals(200, response.statusCode());
+        assertEquals(fname + " " + lname, resultName);
     }
 
 

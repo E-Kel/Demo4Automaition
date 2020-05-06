@@ -21,6 +21,4 @@ public class SignInPageEmailTest {
         assertEquals(200, response.statusCode());
         assertEquals(false, response.jsonPath().get("hasError"));
     }
-
-
 }

@@ -17,6 +17,6 @@ public class EmailField {
                         "&back=my-account" +
                         "&token=ce65cefcbafad255f0866d3b32d32058")
                 .when()
-                .post(URL.DEFAULT_URL+"?controller=authentication&back=my-account");
+                .post(URL.DEFAULT_URL);
     }
 }
