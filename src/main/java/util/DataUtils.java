@@ -66,5 +66,4 @@ public class DataUtils {
                         GetConstantsUtil.getNewCookie()
                 )).limit(2);
     }
-
 }

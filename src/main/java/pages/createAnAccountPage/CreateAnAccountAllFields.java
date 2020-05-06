@@ -2,13 +2,20 @@ package pages.createAnAccountPage;
 
 import connection.RestAPIConnection;
 import constants.URL;
+import io.restassured.filter.cookie.CookieFilter;
 import io.restassured.response.Response;
 
 public class CreateAnAccountAllFields {
+
+    private CookieFilter filter = new CookieFilter();
+
     public Response createAnAccount(String testEmail, String pass, String fName,
                                     String lName, String address, String city,
                                     String zip, String phone) {
         return RestAPIConnection.connection("application/x-www-form-urlencoded")
+                .accept("text/html")
+                .filter(filter)
+                .when()
                 .formParam("customer_firstname", fName)
                 .formParam("customer_lasttname", lName)
                 .formParam("email", testEmail)
@@ -25,20 +32,23 @@ public class CreateAnAccountAllFields {
                 .formParam("email_create", "1")
                 .formParam("is_new_customer", "1")
                 .formParam("back", "my-account")
-                .when()
-                .redirects().follow(true)
-                .get(URL.DEFAULT_URL);
+                .param("controller", "authentication")
+                .post(URL.DEFAULT_URL);
+
     }
 
-    public Response verifyThatUserCanLogInWithRegistredCreds(String email, String pass) {
+    public Response verifyThatUserCanLogInWithRegistredCreds(String email, String pass, String cookie) {
         return RestAPIConnection.connectionHTML()
                 .contentType("application/x-www-form-urlencoded")
+                .filter(filter)
+                .cookie(cookie)
                 .formParam("email", email)
                 .formParam("passwd", pass)
                 .formParam("back", "my-account")
                 .param("controller", "authentication")
                 .when()
-                .post(URL.DEFAULT_URL);
+                .post(URL.DEFAULT_URL)
+                .andReturn();
 
     }
 }

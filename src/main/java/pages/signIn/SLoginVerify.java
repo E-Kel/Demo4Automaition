@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,13 +13,14 @@ public class SLoginVerify {
 
     public static String checkLogin(String email, String pass, String fname, String lname) {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-        options.addArguments("window-size=1200x600");
-        WebDriver driver = new ChromeDriver(options);
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("headless");
+//        options.addArguments("window-size=1200x600");
+//        WebDriver driver = new ChromeDriver(options);
+        WebDriver driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
 
@@ -32,7 +32,7 @@ public class SLoginVerify {
         searchPasswordLoginField.sendKeys(pass);
         searchLoginButton.click();
 
-        WebElement findUsername = waitForElementLocatedBy(driver, By.xpath("//span[contains(text(),'vcbxvbxcvbx xvbxcvbxcb')]"));
+        WebElement findUsername = waitForElementLocatedBy(driver, By.xpath(String.format("//span[contains(text(),'%s1 %s2')]", fname, lname)));
 
         String usernameText = findUsername.getText();
         driver.quit();
@@ -42,7 +42,7 @@ public class SLoginVerify {
     }
 
     private static WebElement waitForElementLocatedBy(WebDriver driver, By by) {
-        return new WebDriverWait(driver, 10)
+        return new WebDriverWait(driver, 20)
                 .until(ExpectedConditions
                         .presenceOfElementLocated(by));
 
