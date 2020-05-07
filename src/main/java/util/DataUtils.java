@@ -1,11 +1,15 @@
 package util;
 
+import constants.Cookie;
+import constants.Tokens;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.stream.Stream;
 
 import static constants.ResultValues.*;
-import static constants.ResultValues.BLOUSE_RESULT;
+import static constants.TestDataGeneratorForAddingToCartWithProperties.generateIpa;
+import static constants.TestDataGeneratorForAddingToCartWithProperties.generateQTY;
+import static constants.TestDataGeneratorForRegistration.emailGenerator;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class DataUtils {
@@ -15,8 +19,8 @@ public class DataUtils {
 
     public static Stream<Arguments> provideArgumentsValidSearchData() {
         return Stream.of(
-                arguments("Tops" , TOPS_RESULT),
-                arguments("Dresses",  DRESSES_RESULT),
+                arguments("Tops", TOPS_RESULT),
+                arguments("Dresses", DRESSES_RESULT),
                 arguments("T-shirts", T_SHIRTS_RESULT),
                 arguments("Casual dresses", CASUAL_DRESSES_RESULT),
                 arguments("Summer dresses", SUMMER_DRESSES_RESULT),
@@ -38,5 +42,13 @@ public class DataUtils {
         );
     }
 
+    static Stream<Arguments> provideEmail() {
+        return Stream.generate(() ->
+                arguments(Cookie.STATIC_COOKIE, emailGenerator())).limit(10);
+    }
 
+    static Stream<Arguments> provideArgumentsForAddingToCartWithDifSizeAndColor() {
+        return Stream.generate(() ->
+                arguments(generateQTY(), generateIpa(), Tokens.TOKEN)).limit(10);
+    }
 }
