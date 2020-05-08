@@ -33,8 +33,8 @@ public class FilterProducts {
                 .$$(productContainer);
     }
 
-    public int getNumberProductsWereFiltered(SelenideElement webElement) {
-        String productNumberOnFilter = webElement.$("span").getText();
+    public int getNumberProductsWereFiltered(SelenideElement selenideElement) {
+        String productNumberOnFilter = selenideElement.$("span").getText();
         return Integer.parseInt(productNumberOnFilter.replace("(", "").replace(")", ""));
     }
 

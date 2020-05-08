@@ -16,7 +16,7 @@ public class Cart {
     }
 
     private String getAddToCartBodyRequest(String idProduct, String qty, String token) {
-        return "controller=api.cart&" +
+        return "controller=cart&" +
                 "add=1&" +
                 "ajax=true&" +
                 "qty="+qty+"&"+

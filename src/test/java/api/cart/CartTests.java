@@ -15,7 +15,7 @@ public class CartTests {
 
     @ParameterizedTest
     @Tag("API")
-    @DisplayName("Check adds product to api.cart ")
+    @DisplayName("Check adds product to cart ")
     @ValueSource(strings = {"1", "2", "3", "4", "5", "6", "7"})
     void addProductToCart(String id) {
         Response response = cart.addProductToCart(id, "1", "e817bb0705dd58da8db074c69f729fd8");

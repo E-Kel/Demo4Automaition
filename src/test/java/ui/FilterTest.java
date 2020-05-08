@@ -29,7 +29,6 @@ public class FilterTest {
     }
 
     @Test
-    @Order(2)
     void filterProductByColor() {
         SelenideElement color = filterProducts.getFilterProductsBy("Orange", FilterGroup.COLOR);
         color.click();
@@ -45,7 +44,6 @@ public class FilterTest {
     }
 
     @Test
-    @Order(1)
     void filterProductBySize() {
         SelenideElement size = filterProducts.getFilterProductsBy("S", FilterGroup.SIZE);
         size.click();
