@@ -1,6 +1,6 @@
-package registration;
+package api.registration;
 
-import constants.URL;
+import api.constants.URL;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 

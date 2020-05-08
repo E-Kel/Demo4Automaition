@@ -1,4 +1,4 @@
-package constants;
+package api.constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class ResultValues {
+ public class ResultValues {
     private ResultValues() {
 
     }

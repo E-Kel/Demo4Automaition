@@ -1,6 +1,6 @@
-package constants;
+package api.constants;
 
-public class URL {
+ public class URL {
     private URL(){
 
     }

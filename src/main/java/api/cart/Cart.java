@@ -1,7 +1,7 @@
-package cart;
+package api.cart;
 
-import connection.RestAPIConnection;
-import constants.URL;
+import api.connection.RestAPIConnection;
+import api.constants.URL;
 import io.restassured.response.Response;
 
 public class Cart {
