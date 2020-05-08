@@ -1,7 +1,7 @@
-package search;
+package api.search;
 
-import connection.RestAPIConnection;
-import constants.URL;
+import api.connection.RestAPIConnection;
+import api.constants.URL;
 import io.restassured.response.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

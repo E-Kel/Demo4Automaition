@@ -1,14 +1,12 @@
-package registration.test;
+package api.registration;
 
-import constants.ResultValues;
-import constants.URL;
-import io.restassured.RestAssured;
+import api.constants.ResultValues;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import registration.RegistrationResponse;
+import api.registration.RegistrationResponse;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

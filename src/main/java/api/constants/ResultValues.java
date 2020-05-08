@@ -1,4 +1,4 @@
-package constants;
+package api.constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class ResultValues {
+ public class ResultValues {
     private ResultValues() {
 
     }
@@ -22,7 +22,7 @@ public class ResultValues {
             "Printed Chiffon Dress", "Printed Dress", "Blouse");
     public static final List<String> BLOUSE_RESULT = Collections.singletonList("Blouse");
 
-    public static final String SEARCH_NOT_FOUND_MESSAGE = "No results were found for your search ";
+    public static final String SEARCH_NOT_FOUND_MESSAGE = "No results were found for your api.cart.search ";
 
     public static final String INVALID_EMAIL_MESSAGE = "Invalid email address.";
     public static final String ALREADY_REGISTERED_EMAIL_MESSAGE = "An account using this email address has already been registered. " +

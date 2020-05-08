@@ -1,6 +1,6 @@
-package search.test;
+package api.search;
 
-import constants.ResultValues;
+import api.constants.ResultValues;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import search.SearchField;
+import api.search.SearchField;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class SearchTest {
 
     @ParameterizedTest
     @Tag("API")
-    @DisplayName("Verify search field with valid data")
+    @DisplayName("Verify api.cart.search field with valid data")
     @MethodSource("util.DataUtils#provideArgumentsValidSearchData")
     void verifySearchFieldWithValidData(String searchContent, List<String> list) {
         Response response = searchField.search(searchContent);
@@ -31,7 +31,7 @@ public class SearchTest {
 
 
     @Tag("API")
-    @DisplayName("Verify search field with invalid data")
+    @DisplayName("Verify api.cart.search field with invalid data")
     @ParameterizedTest
     @MethodSource("util.DataUtils#provideArgumentsInvalidSearchData")
     void verifySearchFieldWithInValidData(String search) {
@@ -46,7 +46,7 @@ public class SearchTest {
     }
 
     @Tag("API")
-    @DisplayName("Verify search field with data from footer")
+    @DisplayName("Verify api.cart.search field with data from footer")
     @ParameterizedTest
     @ValueSource(strings = {"Categories", "Information", "My account", "Store information",
             "Specials", "Best sellers", "Our stores", "Contact us", "Terms and conditions of use",

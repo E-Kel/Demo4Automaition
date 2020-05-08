@@ -1,7 +1,7 @@
-package cart;
+package api.cart;
 
-import connection.RestAPIConnection;
-import constants.URL;
+import api.connection.RestAPIConnection;
+import api.constants.URL;
 import io.restassured.response.Response;
 
 public class Cart {
@@ -16,7 +16,7 @@ public class Cart {
     }
 
     private String getAddToCartBodyRequest(String idProduct, String qty, String token) {
-        return "controller=cart&" +
+        return "controller=api.cart&" +
                 "add=1&" +
                 "ajax=true&" +
                 "qty="+qty+"&"+
