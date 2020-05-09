@@ -20,7 +20,7 @@ public class SearchTest {
     @ParameterizedTest
     @Tag("API")
     @DisplayName("Verify search field with valid data")
-    @MethodSource("util.DataUtils#provideArgumentsValidSearchData")
+    @MethodSource("api.util.DataUtils#provideArgumentsValidSearchData")
     void verifySearchFieldWithValidData(String searchContent, List<String> list) {
         Response response = searchField.search(searchContent);
         assertEquals(searchField.getFindText(response), searchContent.toLowerCase());
@@ -32,7 +32,7 @@ public class SearchTest {
     @Tag("API")
     @DisplayName("Verify search field with invalid data")
     @ParameterizedTest
-    @MethodSource("util.DataUtils#provideArgumentsInvalidSearchData")
+    @MethodSource("api.util.DataUtils#provideArgumentsInvalidSearchData")
     void verifySearchFieldWithInValidData(String search) {
         Response response = searchField.search(search);
         String expected = ResultValues.SEARCH_NOT_FOUND_MESSAGE + "\"" + search + "\"";
