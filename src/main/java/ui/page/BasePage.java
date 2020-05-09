@@ -14,7 +14,7 @@ public class BasePage {
 
 
     public SearchPage clickOnDresses() {
-        dresses.waitUntil(Condition.visible, 10).click();
+        dresses.shouldBe(Condition.visible).click();
         return new SearchPage();
     }
 }

@@ -8,11 +8,11 @@ import ui.constants.SearchConstants;
 import ui.filteres.FilterProducts;
 import org.junit.jupiter.api.*;
 import ui.page.SearchPage;
-import ui.util.SelenideSetUp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static ui.constants.BasePageConstants.CATEGORY_DRESSES;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -22,7 +22,7 @@ public class FilterTest extends SelenideSetUp {
 
     @Test
     void filterProductByColor() {
-        new Categories().clickOnCategoryElement("dresses");
+        new Categories().clickOnCategoryElement(CATEGORY_DRESSES);
         SelenideElement color = filterProducts.getFilterProductsBy("Orange", FilterGroup.COLOR);
         color.click();
 
@@ -38,7 +38,7 @@ public class FilterTest extends SelenideSetUp {
 
     @Test
     void filterProductBySize() {
-        new Categories().clickOnCategoryElement("dresses");
+        new Categories().clickOnCategoryElement(CATEGORY_DRESSES);
         SelenideElement size = filterProducts.getFilterProductsBy("S", FilterGroup.SIZE);
         size.click();
 
