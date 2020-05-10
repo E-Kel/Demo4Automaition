@@ -1,9 +1,9 @@
-package connection;
+package api.connection;
 
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 
-public class RestAPIConnection {
+ public class RestAPIConnection {
     private RestAPIConnection(){
 
     }
