@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static ui.constants.NotificationString.EMAIL_SUCCESS_RECOVER_NOTIFICATION;
 
 public class LoginPage {
     private SelenideElement emailEl = $(By.name("email"));
@@ -12,14 +13,14 @@ public class LoginPage {
     private SelenideElement forgotLink = $(By.linkText("Forgot your password?"));
     private SelenideElement successAlert = $(".alert.alert-success");
 
-    public void credentials(String email, String pass) {
+    public void setCredentials(String email, String pass) {
         emailEl.setValue(email);
         passEl.setValue(pass).pressEnter();
     }
 
-    public void recoveryPassword(String email) {
+    public void recoverPassword(String email) {
         forgotLink.click();
         emailEl.setValue(email).pressEnter();
-        successAlert.shouldHave(Condition.textCaseSensitive("A confirmation email has been sent to your address: " + email));
+        successAlert.shouldHave(Condition.textCaseSensitive(EMAIL_SUCCESS_RECOVER_NOTIFICATION + email));
     }
 }
