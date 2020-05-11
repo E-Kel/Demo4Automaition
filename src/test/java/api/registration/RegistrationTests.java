@@ -1,4 +1,4 @@
-package api.registration;
+package API.registration;
 
 import api.constants.ResultValues;
 import io.restassured.response.Response;

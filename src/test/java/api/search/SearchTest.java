@@ -1,4 +1,4 @@
-package api.search;
+package API.search;
 
 import api.constants.ResultValues;
 import io.restassured.response.Response;
@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import api.search.SearchField;
 
 import java.util.List;
 

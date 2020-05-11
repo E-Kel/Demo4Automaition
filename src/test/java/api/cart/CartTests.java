@@ -1,5 +1,6 @@
-package api.cart;
+package API.cart;
 
+import api.cart.Cart;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
