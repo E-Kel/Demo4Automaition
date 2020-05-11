@@ -1,18 +1,30 @@
-package API.registration;
+package api.registration;
 
 import api.constants.ResultValues;
+import api.cookie.SessionCookie;
+import api.pages.MainPage;
+import api.pages.productPage.ProductPage;
+import api.pages.signIn.EmailField;
+import io.restassured.http.Cookie;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import api.registration.RegistrationResponse;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RegistrationTests {
     RegistrationResponse response = new RegistrationResponse();
+    private static Cookie mainPageCookie;
+
+    @BeforeAll
+    @Tag("API")
+    @DisplayName("Open product page")
+    static void setCookieAndToken() {
+        mainPageCookie = SessionCookie.getCookie(MainPage.openMainPage());
+        Response openProductPage = ProductPage.openProductPage(5, mainPageCookie);
+    }
 
     @Test
     @Tag("API")
@@ -42,5 +54,16 @@ public class RegistrationTests {
                 () -> assertTrue(actualHasError),
                 () -> assertEquals(expectedError, actualError)
         );
+    }
+
+    @ParameterizedTest
+    @Tag("API")
+    @DisplayName("Check email field with valid data on the sign in page")
+    @MethodSource("api.util.DataUtils#provideEmail")
+    void verifyEmailFieldWithValidEmail(String testEmail) {
+        EmailField emailField = new EmailField();
+        Response response = emailField.emailValidationOnSignInPage(testEmail, mainPageCookie.getValue());
+        assertEquals(200, response.statusCode());
+        assertEquals(false, response.jsonPath().get("hasError"));
     }
 }
