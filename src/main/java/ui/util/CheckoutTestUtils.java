@@ -21,7 +21,7 @@ public class CheckoutTestUtils {
     private ShippingPage shippingPage = new ShippingPage();
 
     private MainPage openMainPage() {
-        return open(URL.PRODUCT_URL, MainPage.class);
+        return open(URL.PRODUCT_URL_ID_2, MainPage.class);
     }
 
     private void checkout() {
