@@ -1,5 +1,6 @@
 package ui.util;
 
+import ui.constants.CheckoutConstants;
 import ui.constants.URL;
 import ui.login.LoginPage;
 import ui.page.ProductPage;
@@ -23,6 +24,7 @@ public class CheckoutTestUtils {
     private MainPage openMainPage() {
         return open(URL.PRODUCT_URL_ID_2, MainPage.class);
     }
+
 
     private void checkout() {
         productPage.goToCartPage();
@@ -48,5 +50,13 @@ public class CheckoutTestUtils {
     public void openMainPageAndAddProductToCart() {
         openSiteAndAddProductToCart();
         checkout();
+    }
+
+    public static String getTotalPrice() {
+        return CheckoutConstants.TOTAL_PRICE;
+    }
+
+    public static void setTotalPrice(String totalPrice) {
+        CheckoutConstants.TOTAL_PRICE = totalPrice;
     }
 }

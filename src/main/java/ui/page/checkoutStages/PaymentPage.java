@@ -2,11 +2,11 @@ package ui.page.checkoutStages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ui.constants.CheckoutConstants;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static ui.constants.CheckoutConstants.SUCCESS_ORDER_MESSAGE;
+import static ui.util.CheckoutTestUtils.setTotalPrice;
 
 public class PaymentPage {
 
@@ -24,13 +24,12 @@ public class PaymentPage {
     }
 
     public void payByBankWire() {
-        CheckoutConstants.setTotalPrice(totalPriceFieldBeforePayment.shouldBe(Condition.visible).getText());
+        setTotalPrice(totalPriceFieldBeforePayment.shouldBe(Condition.visible).getText());
         PayByBankWireButton.shouldBe(Condition.visible).click();
     }
 
     public void payByCheck() {
-        CheckoutConstants.setTotalPrice(totalPriceFieldBeforePayment.shouldBe(Condition.visible).getText());
-
+        setTotalPrice(totalPriceFieldBeforePayment.shouldBe(Condition.visible).getText());
         PayByCheckButton.shouldBe(Condition.visible).click();
     }
 
