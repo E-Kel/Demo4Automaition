@@ -13,7 +13,8 @@ import static ui.constants.CredentialsValues.EMAIL;
 import static ui.constants.CredentialsValues.PASSWORD;
 
 public class CheckoutTestUtils {
-    public static String TOTAL_PRICE = "";
+    private static String TOTAL_PRICE = "";
+
     private ProductPage productPage = new ProductPage();
     private SummaryPage summaryPage = new SummaryPage();
     private LoginPage signInPage = new LoginPage();
