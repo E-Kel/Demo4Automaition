@@ -5,6 +5,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import java.util.stream.Stream;
 
 import static api.constants.ResultValues.*;
+import static api.constants.TestDataGeneratorForAddingToCartWithProperties.generateIpa;
+import static api.constants.TestDataGeneratorForAddingToCartWithProperties.generateQTY;
+import static api.constants.TestDataGeneratorForRegistration.emailGenerator;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class DataUtils {
@@ -37,5 +40,13 @@ public class DataUtils {
         );
     }
 
+    static Stream<Arguments> provideEmail() {
+        return Stream.generate(() ->
+                arguments(emailGenerator())).limit(10);
+    }
 
+    static Stream<Arguments> provideArgumentsForAddingToCartWithDifSizeAndColor() {
+        return Stream.generate(() ->
+                arguments(generateQTY(), generateIpa())).limit(10);
+    }
 }
