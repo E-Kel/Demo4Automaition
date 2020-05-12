@@ -1,5 +1,6 @@
 package ui.page.checkoutStages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -11,6 +12,6 @@ public class AddressPage implements CheckoutButton {
 
     @Override
     public void clickProceedToCheckout() {
-        proceedToCheckout.click();
+        proceedToCheckout.shouldBe(Condition.visible).click();
     }
 }
