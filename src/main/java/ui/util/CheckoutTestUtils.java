@@ -1,6 +1,5 @@
 package ui.util;
 
-import ui.constants.CheckoutConstants;
 import ui.constants.URL;
 import ui.login.LoginPage;
 import ui.page.ProductPage;
@@ -14,7 +13,7 @@ import static ui.constants.CredentialsValues.EMAIL;
 import static ui.constants.CredentialsValues.PASSWORD;
 
 public class CheckoutTestUtils {
-
+    public static String TOTAL_PRICE = "";
     private ProductPage productPage = new ProductPage();
     private SummaryPage summaryPage = new SummaryPage();
     private LoginPage signInPage = new LoginPage();
@@ -53,10 +52,10 @@ public class CheckoutTestUtils {
     }
 
     public static String getTotalPrice() {
-        return CheckoutConstants.TOTAL_PRICE;
+        return TOTAL_PRICE;
     }
 
     public static void setTotalPrice(String totalPrice) {
-        CheckoutConstants.TOTAL_PRICE = totalPrice;
+        TOTAL_PRICE = totalPrice;
     }
 }
