@@ -8,12 +8,23 @@ import io.restassured.specification.RequestSpecification;
 
     }
 
-    public static RequestSpecification connectionHTML(){
-        return RestAssured.given()
-                .header("Content-Type", "text/html");
-    }
-    public static RequestSpecification connection(String contentType){
-        return RestAssured.given()
-                .header("Content-Type", contentType);
-    }
-}
+     public static RequestSpecification connectionHTML() {
+         return RestAssured.given()
+                 .header("Content-Type", "text/html");
+     }
+
+
+     public static RequestSpecification connection(String contentType) {
+         return RestAssured.given()
+                 .header("Content-Type", contentType);
+     }
+
+
+     public static RequestSpecification connection(String contentType, String cookie) {
+         return RestAssured.given()
+                 .header("Content-Type", contentType)
+                 .header("Cookie", cookie);
+     }
+
+
+ }
