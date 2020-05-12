@@ -5,7 +5,6 @@ public class CheckoutConstants {
 
     public static void setTotalPrice(String totalPrice) {
         TOTAL_PRICE = totalPrice;
-        System.out.println(TOTAL_PRICE);
     }
 
 }
