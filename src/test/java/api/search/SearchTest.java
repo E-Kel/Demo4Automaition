@@ -1,13 +1,14 @@
-package api.search;
+package API.search;
 
 import api.constants.ResultValues;
+import api.search.SearchField;
 import io.restassured.response.Response;
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class SearchTest {
     void verifySearchFieldWithValidData(String searchContent, List<String> list) {
         Response response = searchField.search(searchContent);
         assertEquals(searchField.getFindText(response), searchContent.toLowerCase());
-        assertTrue(searchField.parseFoundElementsToStringCollection(response).containsAll(list));
+        assertTrue(CollectionUtils.isEqualCollection(searchField.parseFoundElementsToStringCollection(response), list));
         assertEquals(200, response.statusCode());
     }
 
