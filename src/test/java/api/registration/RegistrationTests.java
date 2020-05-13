@@ -10,6 +10,8 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import static api.constants.ResultValues.ALREADY_REGISTERED_EMAIL_MESSAGE;
+import static api.constants.ResultValues.INVALID_EMAIL_MESSAGE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -32,7 +34,7 @@ public class RegistrationTests {
         Response response1 = response.registrationInvalidEmail();
         String actualError = response1.jsonPath().getString("errors[0]");
         Boolean actualHasError = response1.jsonPath().get("hasError");
-        String expectedError = ResultValues.INVALID_EMAIL_MESSAGE;
+        String expectedError = INVALID_EMAIL_MESSAGE;
         Assertions.assertAll(
                 () -> assertEquals(200, response1.statusCode()),
                 () -> assertTrue(actualHasError),
@@ -47,7 +49,7 @@ public class RegistrationTests {
         Response response1 = response.registrationAlredyRegistred();
         String actualError = response1.jsonPath().getString("errors[0]");
         Boolean actualHasError = response1.jsonPath().get("hasError");
-        String expectedError = ResultValues.ALREADY_REGISTERED_EMAIL_MESSAGE;
+        String expectedError = ALREADY_REGISTERED_EMAIL_MESSAGE;
         Assertions.assertAll(
                 () -> assertEquals(200, response1.statusCode()),
                 () -> assertTrue(actualHasError),
