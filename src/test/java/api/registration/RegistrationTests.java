@@ -1,10 +1,11 @@
-package api.registration;
+package API.registration;
 
 
 import api.cookie.SessionCookie;
 import api.pages.MainPage;
 import api.pages.productPage.ProductPage;
 import api.pages.signIn.EmailField;
+import api.registration.RegistrationResponse;
 import io.restassured.http.Cookie;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;

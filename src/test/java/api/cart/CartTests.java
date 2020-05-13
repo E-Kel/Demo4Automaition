@@ -1,6 +1,7 @@
-package api.cart;
+package API.cart;
 
 
+import api.cart.Cart;
 import api.constants.Tokens;
 import api.cookie.SessionCookie;
 import api.pages.MainPage;
