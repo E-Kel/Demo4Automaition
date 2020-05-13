@@ -47,10 +47,7 @@ public class SearchTest {
     @Tag("API")
     @DisplayName("Verify search field with data from footer")
     @ParameterizedTest
-    @ValueSource(strings = {"Categories", "Information", "My account", "Store information",
-            "Specials", "Best sellers", "Our stores", "Contact us", "Terms and conditions of use",
-            "About us", "Sitemap", "My orders", "My credit slips", "My addresses", "My personal info"
-    })
+    @MethodSource("api.util.DataUtils#provideArgumentsForFooterSearch")
     void searchByDataFromFooterWithoutLogIn(String search) {
         Response response = searchField.search(search);
         String expectedError = ResultValues.SEARCH_NOT_FOUND_MESSAGE + "\"" + search + "\"";
