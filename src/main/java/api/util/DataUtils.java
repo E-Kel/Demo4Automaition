@@ -40,6 +40,27 @@ public class DataUtils {
         );
     }
 
+    public static Stream<Arguments> provideArgumentsForFooterSearch() {
+        return Stream.of(
+                arguments("Categories"),
+                arguments("Information"),
+                arguments("My account"),
+                arguments("Store information"),
+                arguments("Specials"),
+                arguments("Best sellers"),
+                arguments("Our stores"),
+                arguments("Contact us"),
+                arguments("Terms and conditions of use"),
+                arguments("About us"),
+                arguments("Sitemap"),
+                arguments("My orders"),
+                arguments("My credit slips"),
+                arguments("My addresses"),
+                arguments("My personal info")
+        );
+    }
+
+
     static Stream<Arguments> provideEmail() {
         return Stream.generate(() ->
                 arguments(emailGenerator())).limit(10);
