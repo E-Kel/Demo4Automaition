@@ -1,13 +1,12 @@
 package ui.filters;
 
-import ui.SelenideSetUp;
-import ui.constants.SearchConstants;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import ui.SelenideSetUp;
+import ui.constants.SearchConstants;
 import ui.page.SearchPage;
-
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

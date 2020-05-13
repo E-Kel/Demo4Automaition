@@ -1,6 +1,5 @@
 package api.registration;
 
-import api.constants.ResultValues;
 import api.cookie.SessionCookie;
 import api.pages.MainPage;
 import api.pages.productPage.ProductPage;
