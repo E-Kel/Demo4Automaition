@@ -1,5 +1,6 @@
 package ui.page.checkoutStages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -12,15 +13,15 @@ public class ProductPage {
 
 
     public void clickAddToCartButton() {
-        addToCartButton.click();
+        addToCartButton.should(Condition.appear).click();
     }
 
     public void goToCartPage() {
-        cartLable.click();
+        cartLable.shouldBe(Condition.visible).click();
     }
 
     public void closePopupIcon() {
-        closePopupIcon.click();
+        closePopupIcon.should(Condition.appear).click();
     }
 
 }
