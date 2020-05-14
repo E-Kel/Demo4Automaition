@@ -26,7 +26,6 @@ public class SelenideSetUp {
 
     @AfterEach
     void shutDown() {
-        closeWebDriver();
         getWebDriver().quit();
     }
 }
