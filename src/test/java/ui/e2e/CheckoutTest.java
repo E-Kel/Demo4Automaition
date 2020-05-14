@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ui.util.CheckoutTestUtils.getTotalPrice;
 
-public class CheckoutTest extends SelenideSetUp {
+public class CheckoutTest{
     private PaymentPage paymentPage = new PaymentPage();
     private CheckoutTestUtils testsBody = new CheckoutTestUtils();
 
