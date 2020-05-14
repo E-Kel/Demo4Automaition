@@ -15,8 +15,7 @@ public class PaymentPage {
     private SelenideElement totalPriceFieldBeforePayment = $(byXpath("//span[@id='total_price']"));
     private SelenideElement totalPriceFieldAfterPayment = $(byId("amount"));
     private SelenideElement confirmOrderButton = $(byXpath("//span[contains(text(),'confirm my order')]"));
-    private SelenideElement orderConfirmedMessage1 = $(byXpath("//p[@class='alert alert-success']"));
-    private SelenideElement orderConfirmedMessage2 = $(byCssSelector("//strong[@class='dark', contains(text(), 'Your order on My Store is complete.']"));
+    private SelenideElement orderConfirmedMessage1 = $(byId("center_column")).$(withText(SUCCESS_ORDER_MESSAGE));
 
 
     public String getCurrentTotalPrice() {
@@ -39,10 +38,6 @@ public class PaymentPage {
 
     public boolean orderIsConfirmed() {
         return (orderConfirmedMessage1
-                .getText()
-                .equals(SUCCESS_ORDER_MESSAGE)
-                || orderConfirmedMessage2
-                .getText()
-                .equals(SUCCESS_ORDER_MESSAGE));
+                .isDisplayed());
     }
 }
