@@ -13,19 +13,18 @@ public class ProductPage {
     private SelenideElement cartLable = $(By.cssSelector(".shopping_cart > a"));
 
 
-    public void clickAddToCartButton() {
 
-        screenshot("add to cart");
-        addToCartButton.waitUntil(Condition.visible, 10000).click();
+    public void clickAddToCartButton() {
+        addToCartButton.click();
     }
 
     public void goToCartPage() {
-        cartLable.shouldBe(Condition.visible).click();
+        cartLable.click();
     }
 
     public void closePopupIcon() {
-        screenshot("close popup");
-        closePopupIcon.waitUntil(Condition.appear,10000).click();
+        closePopupIcon.click();
     }
+
 
 }
