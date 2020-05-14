@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProductPage {
-    private SelenideElement addToCartButton = $(byId("add_to_cart"));
+    private SelenideElement addToCartButton = $(byId("add_to_cart")).$(withText("Add to cart"));
     private SelenideElement closePopupIcon = $(byXpath("//span[@class='cross']"));
     private SelenideElement cartLable = $(byCssSelector(".shopping_cart > a"));
 
