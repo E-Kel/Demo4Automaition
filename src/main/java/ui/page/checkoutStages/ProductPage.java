@@ -14,7 +14,7 @@ public class ProductPage {
 
 
     public void clickAddToCartButton() {
-        addToCartButton.waitUntil(Condition.visible, 10000).click();
+        addToCartButton.click();
     }
 
     public void goToCartPage() {
@@ -22,7 +22,7 @@ public class ProductPage {
     }
 
     public void closePopupIcon() {
-        closePopupIcon.waitUntil(Condition.appear,10000).click();
+        closePopupIcon.click();
     }
 
 }
