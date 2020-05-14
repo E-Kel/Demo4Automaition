@@ -1,5 +1,6 @@
 package ui.page.checkoutStages;
 
+import static com.codeborne.selenide.Selenide.screenshot;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -13,10 +14,13 @@ public class ProductPage {
 
 
     public void clickAddToCartButton() {
+
+        screenshot("my_file_name");
         addToCartButton.waitUntil(Condition.visible, 10000).click();
     }
 
     public void goToCartPage() {
+        screenshot("my_file_name");
         cartLable.shouldBe(Condition.visible).click();
     }
 
