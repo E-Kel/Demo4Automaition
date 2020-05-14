@@ -37,7 +37,7 @@ public class PaymentPage {
     }
 
     public boolean orderIsConfirmed() {
-        return (orderConfirmedMessage1
+        return (orderConfirmedMessage1.shouldBe(Condition.visible)
                 .isDisplayed());
     }
 }
