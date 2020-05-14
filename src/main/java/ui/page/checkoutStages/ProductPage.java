@@ -12,21 +12,22 @@ import static com.codeborne.selenide.Selenide.$;
 public class ProductPage {
     private SelenideElement addToCartButton = $(byId("add_to_cart")).$(withText("Add to cart"));
     private SelenideElement closePopupIcon = $(By.xpath("//span[@class='cross']"));
-    private SelenideElement cartLabel = $(By.cssSelector(".shopping_cart > a"));
-
+    private SelenideElement cartLable = $(By.cssSelector(".shopping_cart > a"));
 
 
     public void clickAddToCartButton() {
-        addToCartButton.click();
+
+        screenshot("add to cart");
+        addToCartButton.waitUntil(Condition.visible, 10000).click();
     }
 
     public void goToCartPage() {
-        cartLabel.click();
+        cartLable.shouldBe(Condition.visible).click();
     }
 
     public void closePopupIcon() {
-        closePopupIcon.click();
+        screenshot("close popup");
+        closePopupIcon.waitUntil(Condition.appear,10000).click();
     }
-
 
 }
