@@ -1,5 +1,7 @@
 package ui.page.checkoutStages;
 
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.screenshot;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -8,9 +10,9 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProductPage {
-    private SelenideElement addToCartButton = $(By.xpath("//p[@id='add_to_cart']"));
+    private SelenideElement addToCartButton = $(byId("add_to_cart")).$(withText("Add to cart"));
     private SelenideElement closePopupIcon = $(By.xpath("//span[@class='cross']"));
-    private SelenideElement cartLable = $(By.cssSelector(".shopping_cart > a"));
+    private SelenideElement cartLabel = $(By.cssSelector(".shopping_cart > a"));
 
 
 
@@ -19,7 +21,7 @@ public class ProductPage {
     }
 
     public void goToCartPage() {
-        cartLable.click();
+        cartLabel.click();
     }
 
     public void closePopupIcon() {
