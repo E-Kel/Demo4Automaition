@@ -15,16 +15,16 @@ public class ProductPage {
 
     public void clickAddToCartButton() {
 
-        screenshot("my_file_name");
+        screenshot("add to cart");
         addToCartButton.waitUntil(Condition.visible, 10000).click();
     }
 
     public void goToCartPage() {
-        screenshot("my_file_name");
         cartLable.shouldBe(Condition.visible).click();
     }
 
     public void closePopupIcon() {
+        screenshot("close popup");
         closePopupIcon.waitUntil(Condition.appear,10000).click();
     }
 
