@@ -1,4 +1,4 @@
-package ui.page;
+package ui.page.checkoutStages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;

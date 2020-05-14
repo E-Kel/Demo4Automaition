@@ -2,9 +2,9 @@ package ui.util;
 
 import ui.constants.URL;
 import ui.login.LoginPage;
-import ui.page.ProductPage;
 import ui.page.checkoutStages.AddressPage;
-import ui.page.checkoutStages.MainPage;
+import ui.page.MainPage;
+import ui.page.checkoutStages.ProductPage;
 import ui.page.checkoutStages.ShippingPage;
 import ui.page.checkoutStages.SummaryPage;
 
